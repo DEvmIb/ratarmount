@@ -113,7 +113,8 @@ class AutoMountLayer(MountSource):
         path: Path inside this mount source. May include recursively mounted mount points.
               Should contain a leading slash.
         """
-
+        #lsf
+        return None
         # For better performance, only look at the suffix not at the magic bytes.
         strippedFilePath = stripSuffixFromTarFile(path)
         if strippedFilePath == path:
