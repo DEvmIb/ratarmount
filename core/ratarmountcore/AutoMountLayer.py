@@ -113,8 +113,6 @@ class AutoMountLayer(MountSource):
         path: Path inside this mount source. May include recursively mounted mount points.
               Should contain a leading slash.
         """
-        #lsf
-        return None
         # For better performance, only look at the suffix not at the magic bytes.
         strippedFilePath = stripSuffixFromTarFile(path)
         if strippedFilePath == path:
@@ -162,6 +160,8 @@ class AutoMountLayer(MountSource):
             _, deepestMountSource, deepestFileInfo = parentMountSource.getMountSource(archiveFileInfo)
             if isinstance(deepestMountSource, FolderMountSource):
                 # Open from file path on host file system in order to write out TAR index files.
+                #lsf
+                return None
                 mountSource = openMountSource(deepestMountSource.getFilePath(deepestFileInfo), **options)
             else:
                 # This will fail with StenciledFile objects as returned by SQLiteIndexedTar mount sources and when
