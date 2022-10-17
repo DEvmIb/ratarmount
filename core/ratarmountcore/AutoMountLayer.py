@@ -127,7 +127,7 @@ class AutoMountLayer(MountSource):
         if 'transformRecursiveMountPoint' in self.options:
             pattern = self.options['transformRecursiveMountPoint']
             if isinstance(pattern, (tuple, list)) and len(pattern) == 2:
-                mountPoint = '/' + re.(pattern[0], pattern[1], mountPoint).lstrip('/')
+                mountPoint = '/' + re.sub(pattern[0], pattern[1], mountPoint).lstrip('/')
 
         if mountPoint in self.mounted:
             return None
@@ -203,7 +203,7 @@ class AutoMountLayer(MountSource):
         """
 
         if self.recursionDepth and self.lazyMounting:
-            subPath = "/"
+            subPath = ""
             # First go from higher paths to deeper ones and try to mount all parent archives lazily.
             for part in path.lstrip('/').split('/'):
                 subPath = os.path.join(subPath, part)
