@@ -203,7 +203,7 @@ class AutoMountLayer(MountSource):
         """
 
         if self.recursionDepth and self.lazyMounting:
-            subPath = ""
+            subPath = "/"
             # First go from higher paths to deeper ones and try to mount all parent archives lazily.
             for part in path.lstrip('/').split('/'):
                 subPath = os.path.join(subPath, part)
