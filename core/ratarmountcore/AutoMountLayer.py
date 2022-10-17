@@ -162,6 +162,8 @@ class AutoMountLayer(MountSource):
                 # Open from file path on host file system in order to write out TAR index files.
                 mountSource = openMountSource(deepestMountSource.getFilePath(deepestFileInfo), **options)
             else:
+                # no deep mount
+                print("[Warning] no deep extract of:", pathInsideParentMountPoint.rsplit('/', 1)[-1])
                 return None
                 # This will fail with StenciledFile objects as returned by SQLiteIndexedTar mount sources and when
                 # given to backends like indexed_zstd, which do expect the file object to have a valid fileno.
